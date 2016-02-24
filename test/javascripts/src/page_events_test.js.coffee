@@ -34,6 +34,6 @@ test "document turbolinks:load with Turbolinks5 on", ->
 
   triggerEvent "DOMContentLoaded"
   triggerEvent "turbolinks:load"
-  ok getText el
+  ok not getText el
 
   window.Turbolinks = original
