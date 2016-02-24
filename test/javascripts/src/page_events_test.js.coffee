@@ -23,3 +23,17 @@ test "document page:update with Turbolinks on", ->
   ok getText el
 
   window.Turbolinks = original
+
+test "document turbolinks:load with Turbolinks5 on", ->
+  el = addTimeEl()
+  triggerEvent "turbolinks:load"
+  ok not getText el
+
+  original = window.Turbolinks
+  window.Turbolinks = { supported: true }
+
+  triggerEvent "DOMContentLoaded"
+  triggerEvent "turbolinks:load"
+  ok getText el
+
+  window.Turbolinks = original
